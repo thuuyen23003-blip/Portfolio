@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Learning Analytics on Odoo ERP | Uyen Tran</title>
+<title>Learning Analytics on Odoo ERP | Tran Vo Thi Thu Uyen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-name" href="../index.html">Uyen Tran</a>
+    <a class="nav-name" href="../index.html">Tran Vo Thi Thu Uyen</a>
     <div class="nav-links">
       <a href="../index.html#projects">Projects</a>
       <a href="../index.html#skills">Skills</a>
@@ -46,12 +46,14 @@
 
   <div class="case-block">
     <p class="subgroup-label">Architecture &amp; Design</p>
+    <p>The module was built as a layer on top of Odoo's existing eLearning data (courses and learner activity), adding a processing pipeline that computes engagement metrics and feeds them into a Python-based model trained outside of Odoo.</p>
     <div class="gallery">
       <figure><img src="../images/learning-analytics/01-kien-truc-tong-the.png" alt="Overall system architecture" loading="lazy"><figcaption>Overall system architecture</figcaption></figure>
-      <figure><img src="../images/learning-analytics/02-luong-xu-ly-du-lieu.png" alt="Data processing flow" loading="lazy"><figcaption>Data processing flow</figcaption></figure>
+      <figure><img src="../images/learning-analytics/02-luong-xu-ly-du-lieu.png" alt="Data processing flow" loading="lazy"><figcaption>Data processing flow, from raw activity logs to on-screen recommendations</figcaption></figure>
     </div>
 
     <p class="subgroup-label">Interface</p>
+    <p>On the Odoo side, instructors and administrators view results through a set of list and detail screens: an overview of all learners with at-risk flags, plus a per-learner breakdown of progress, predicted outcome, exam results, and suggested next steps.</p>
     <div class="gallery">
       <figure><img src="../images/learning-analytics/03-giao-dien-danh-sach.png" alt="Learning Records list view" loading="lazy"><figcaption>Learning Records list view</figcaption></figure>
       <figure><img src="../images/learning-analytics/12-giao-dien-bo-loc-va-gop-nhom.png" alt="Filter and group-by view" loading="lazy"><figcaption>Filter and group-by view</figcaption></figure>
@@ -62,6 +64,7 @@
     </div>
 
     <p class="subgroup-label">Model Results</p>
+    <p>Two classification models were trained to predict whether a learner is on-track or at-risk. Random Forest was selected after comparing both models on accuracy, precision, recall, and F1-score; a separate clustering step was used to sanity-check the results against natural learner groupings.</p>
     <div class="gallery">
       <figure><img src="../images/learning-analytics/06-so-sanh-chi-so-mo-hinh.png" alt="Model metric comparison" loading="lazy"><figcaption>Decision Tree vs. Random Forest comparison</figcaption></figure>
       <figure><img src="../images/learning-analytics/07-confusion-matrix-decision-tree.png" alt="Confusion matrix Decision Tree" loading="lazy"><figcaption>Confusion matrix &ndash; Decision Tree</figcaption></figure>
@@ -76,7 +79,7 @@
   </div>
 </div>
 
-<footer>&copy; 2026 Uyen Tran</footer>
+<footer>&copy; 2026 Tran Vo Thi Thu Uyen</footer>
 
 </body>
 </html>

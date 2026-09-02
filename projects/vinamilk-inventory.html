@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inventory Management at Vinamilk | Uyen Tran</title>
+<title>Inventory Management at Vinamilk | Tran Vo Thi Thu Uyen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-name" href="../index.html">Uyen Tran</a>
+    <a class="nav-name" href="../index.html">Tran Vo Thi Thu Uyen</a>
     <div class="nav-links">
       <a href="../index.html#projects">Projects</a>
       <a href="../index.html#skills">Skills</a>
@@ -47,6 +47,7 @@
 
   <div class="case-block">
     <p class="subgroup-label">Process Analysis</p>
+    <p>To understand how Inventory coordinates with the rest of the business, we first mapped the overall workflow, then modeled each core process as an Activity Diagram showing how the warehouse, purchasing, sales, and accounting departments hand off work to one another.</p>
     <div class="gallery">
       <figure><img src="../images/vinamilk-inventory/01-so-do-tong-quan-inventory.jpg" alt="Inventory system overview" loading="lazy"><figcaption>Overview of the warehouse management system</figcaption></figure>
       <figure><img src="../images/vinamilk-inventory/02-activity-nhap-kho-nvl.png" alt="Activity diagram receiving raw materials" loading="lazy"><figcaption>Activity Diagram &ndash; Receiving raw materials</figcaption></figure>
@@ -55,12 +56,20 @@
       <figure><img src="../images/vinamilk-inventory/05-activity-xuat-kho-ban-hang.png" alt="Activity diagram sales fulfillment" loading="lazy"><figcaption>Activity Diagram &ndash; Sales order fulfillment</figcaption></figure>
     </div>
 
-    <p class="subgroup-label">Odoo Implementation &ndash; Storage Locations Setup</p>
+    <p class="subgroup-label">Odoo Implementation &ndash; Setting Up Warehouses</p>
+    <p>Vinamilk operates multiple production sites, so the first step was to represent each physical site as a separate warehouse in Odoo. This lets stock levels, replenishment routes, and reporting be tracked independently per site while still rolling up into one system.</p>
     <div class="gallery">
-      <figure><img src="../images/vinamilk-inventory/06-giao-dien-tao-kho.png" alt="Warehouse setup interface" loading="lazy"><figcaption>Warehouse configuration interface</figcaption></figure>
-      <figure><img src="../images/vinamilk-inventory/06a-mo-muc-locations.png" alt="Locations menu" loading="lazy"><figcaption>Accessing the Locations configuration menu</figcaption></figure>
-      <figure><img src="../images/vinamilk-inventory/06b-tao-vi-tri-ke-gia.png" alt="Creating a new storage location" loading="lazy"><figcaption>Creating a new shelf/rack location</figcaption></figure>
-      <figure><img src="../images/vinamilk-inventory/07-danh-sach-khu-vuc-ke-gia.png" alt="Full list of storage locations" loading="lazy"><figcaption>Complete list of storage zones, shelves, and racks</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/05a-mo-muc-warehouses.png" alt="Accessing the Warehouses menu" loading="lazy"><figcaption>Step 1 &ndash; Configuration &gt; Warehouses</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/05b-tao-kho-moi.png" alt="Creating a new warehouse" loading="lazy"><figcaption>Step 2 &ndash; Creating a new warehouse and its shipment rules</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/05c-danh-sach-3-kho.png" alt="List of created warehouses" loading="lazy"><figcaption>Result &ndash; Three warehouses configured: Binh Duong, Can Tho, and Ho Chi Minh City</figcaption></figure>
+    </div>
+
+    <p class="subgroup-label">Odoo Implementation &ndash; Structuring Storage Locations</p>
+    <p>Inside each warehouse, every product needed to be traceable down to an exact zone, shelf, and rack &mdash; matching how Vinamilk actually organizes goods by product category (packaging, refrigerated goods, cultures/additives, and finished dairy products). We built this as a nested location tree in Odoo's Locations module.</p>
+    <div class="gallery">
+      <figure><img src="../images/vinamilk-inventory/06a-mo-muc-locations.png" alt="Accessing the Locations menu" loading="lazy"><figcaption>Step 1 &ndash; Configuration &gt; Locations</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/06b-tao-vi-tri-ke-gia.png" alt="Creating a new storage location" loading="lazy"><figcaption>Step 2 &ndash; Creating a shelf/rack under its parent zone</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/07-danh-sach-khu-vuc-ke-gia.png" alt="Full list of storage locations" loading="lazy"><figcaption>Result &ndash; Full location hierarchy covering all storage zones, shelves, and racks</figcaption></figure>
     </div>
   </div>
 
@@ -69,7 +78,7 @@
   </div>
 </div>
 
-<footer>&copy; 2026 Uyen Tran</footer>
+<footer>&copy; 2026 Tran Vo Thi Thu Uyen</footer>
 
 </body>
 </html>
