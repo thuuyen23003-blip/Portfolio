@@ -6,7 +6,7 @@
 <title>Inventory Management at Vinamilk | Tran Vo Thi Thu Uyen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="theme-p2">
@@ -81,6 +81,55 @@
       <figure><img src="../images/vinamilk-inventory/06a-mo-muc-locations.png" alt="Accessing the Locations menu" loading="lazy"><figcaption>Step 1 &ndash; Configuration &gt; Locations</figcaption></figure>
       <figure><img src="../images/vinamilk-inventory/06b-tao-vi-tri-ke-gia.png" alt="Creating a new storage location" loading="lazy"><figcaption>Step 2 &ndash; Creating a shelf/rack under its parent zone</figcaption></figure>
       <figure><img src="../images/vinamilk-inventory/07-danh-sach-khu-vuc-ke-gia.png" alt="Full list of storage locations" loading="lazy"><figcaption>Result &ndash; Full location hierarchy covering all storage zones, shelves, and racks</figcaption></figure>
+    </div>
+
+    <p class="subgroup-label">Odoo Implementation &ndash; Configuring Routes</p>
+    <p>While Locations define <em>where</em> goods sit, Routes define <em>what happens to them next</em> &mdash; for example, whether incoming goods pass through quality control before reaching stock, or whether raw materials for production are pulled from a specific shelf rather than the warehouse in general.</p>
+    <div class="gallery">
+      <figure><img src="../images/vinamilk-inventory/08a-mo-muc-routes.png" alt="Accessing the Routes menu" loading="lazy"><figcaption>Step 1 &ndash; Configuration &gt; Routes</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/08b-route-receive-3-steps.png" alt="Receive in 3 steps route" loading="lazy"><figcaption>Step 2 &ndash; "Receive in 3 steps" route for incoming quality checks</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/08c-danh-sach-routes-tuy-chinh.png" alt="Custom routes list" loading="lazy"><figcaption>Result &ndash; Custom routes for pulling raw materials from their exact shelf</figcaption></figure>
+    </div>
+
+    <p class="subgroup-label">Odoo Implementation &ndash; Master Data (Products, Partners, BOM)</p>
+    <p>Before any transaction could be recorded, we needed a clean set of master data: purchasable products, suppliers, customers, and &mdash; for manufactured items &mdash; a Bill of Materials defining exactly what goes into each product.</p>
+    <div class="gallery">
+      <figure><img src="../images/vinamilk-inventory/09a-mo-muc-products.png" alt="Products menu" loading="lazy"><figcaption>Products &ndash; the catalog of items Vinamilk buys and sells</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/09b-tao-nha-cung-cap.png" alt="Creating a supplier" loading="lazy"><figcaption>Creating a supplier record</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/09c-tao-khach-hang.png" alt="Creating a customer" loading="lazy"><figcaption>Creating a customer record</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/09d-chon-san-pham-tao-bom.png" alt="Selecting a product to build its BOM" loading="lazy"><figcaption>Selecting a product to define its Bill of Materials</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/09e-danh-sach-nguyen-vat-lieu-bom.png" alt="BOM ingredient list" loading="lazy"><figcaption>Full ingredient list for fresh milk, including packaging and additives</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="case-block">
+    <p class="subgroup-label">Process in Action &ndash; Purchase to Payment (AD01)</p>
+    <p>This is the Activity Diagram above, running as a real Odoo process: a request for quotation goes out to the supplier, the goods are received into the correct warehouse, and payment is recorded once the vendor bill is confirmed.</p>
+    <div class="gallery">
+      <figure><img src="../images/vinamilk-inventory/10a-mo-muc-request-for-quotation.png" alt="Requests for Quotation menu" loading="lazy"><figcaption>1. Create a Request for Quotation</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/10b-email-yeu-cau-bao-gia.png" alt="RFQ email to supplier" loading="lazy"><figcaption>2. Send the request to the supplier by email</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/10c-phieu-nhap-kho.png" alt="Warehouse receipt" loading="lazy"><figcaption>3. Receive the goods into the warehouse</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/10d-mo-muc-purchase-orders.png" alt="Purchase Orders menu" loading="lazy"><figcaption>4. Confirm the Purchase Order</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/10e-hoa-don-mua-hang-da-thanh-toan.png" alt="Paid vendor bill" loading="lazy"><figcaption>5. Vendor bill marked as paid</figcaption></figure>
+    </div>
+
+    <p class="subgroup-label">Process in Action &ndash; Manufacturing (AD02)</p>
+    <p>Once raw materials are in stock, a Manufacturing Order consumes them according to the product's BOM and produces the finished good, which is then stored in its designated location.</p>
+    <div class="gallery">
+      <figure><img src="../images/vinamilk-inventory/11a-mo-muc-manufacturing-orders.png" alt="Manufacturing Orders menu" loading="lazy"><figcaption>1. Open Manufacturing Orders</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/11b-tao-don-san-xuat.png" alt="Creating a manufacturing order" loading="lazy"><figcaption>2. Create a production order (mint-flavored fresh milk)</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/11c-luu-tru-thanh-pham.png" alt="Storing finished goods" loading="lazy"><figcaption>3. Move finished goods into storage</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/11d-noi-luu-tru-thanh-pham-bac-ha.png" alt="Finished goods storage location" loading="lazy"><figcaption>4. Finished product now traceable to an exact shelf location</figcaption></figure>
+    </div>
+
+    <p class="subgroup-label">Process in Action &ndash; Sales to Cash (AD03 &amp; AD04)</p>
+    <p>On the sales side, an opportunity in the CRM pipeline turns into a quotation, then a confirmed order that triggers delivery from the warehouse and, finally, a paid customer invoice.</p>
+    <div class="gallery">
+      <figure><img src="../images/vinamilk-inventory/12a-mo-muc-sales-pipeline.png" alt="Sales Pipeline menu" loading="lazy"><figcaption>1. Sales Pipeline (CRM)</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/12b-tao-co-hoi-ban-hang.png" alt="Creating a sales opportunity" loading="lazy"><figcaption>2. Create a new sales opportunity</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/12c-mo-muc-quotations.png" alt="Quotations menu" loading="lazy"><figcaption>3. Convert into a quotation and confirm the order</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/12d-tao-hoa-don-ban-hang.png" alt="Creating a sales invoice" loading="lazy"><figcaption>4. Create the customer invoice after delivery</figcaption></figure>
+      <figure><img src="../images/vinamilk-inventory/12e-hoa-don-ban-hang-da-thanh-toan.png" alt="Paid customer invoice" loading="lazy"><figcaption>5. Customer invoice marked as paid</figcaption></figure>
     </div>
   </div>
 
