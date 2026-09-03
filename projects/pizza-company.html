@@ -6,10 +6,10 @@
 <title>Digitalizing The Pizza Company | Tran Vo Thi Thu Uyen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="theme-p3">
 
 <nav>
   <div class="nav-inner">
@@ -34,13 +34,25 @@
   <div class="case-block" style="padding-top:10px;">
     <h4>My Contribution</h4>
     <ul class="contribution-list">
-      <li>Proposed the concept for several subsystems: floor-plan-based table reservation, in-table online ordering, order routing with kitchen synchronization, and real-time preparation tracking.</li>
+      <li>Originated the concept for three subsystems: floor-plan-based table reservation, order routing with kitchen synchronization, and real-time preparation tracking. The remaining subsystems (QR ordering, CRM, order confirmation, and feedback handling) were developed collaboratively as a team.</li>
       <li>Did not build the interfaces directly, but served as the main advisor shaping the design decisions behind the final product.</li>
       <li>Reviewed content and slides prepared by teammates. As the team worked without a designated leader, my role leaned toward shaping ideas and providing critical feedback.</li>
     </ul>
     <div class="stack-tags">
       <span>QR Code Ordering</span><span>Online Reservation</span><span>Kitchen Workflow</span><span>UX Flow</span>
     </div>
+  </div>
+
+  <div class="case-block">
+    <h4>Key Design Decisions</h4>
+    <ul class="contribution-list">
+      <li>Modeled table selection as a visual floor plan &mdash; similar to choosing a seat for a flight or a movie &mdash; rather than a simple "available / not available" indicator, so customers could compare zones and table sizes before arriving.</li>
+      <li>Designed a fallback for no-shows: a reservation holds the table for a fixed window (e.g. 15 minutes), after which it is automatically released, with a reminder sent to the customer beforehand.</li>
+      <li>Kept a manual ordering path alongside QR ordering for customers less comfortable with the technology, or in case of a network outage &mdash; the system was designed to support staff, not replace them.</li>
+      <li>Allowed a short edit window (3 minutes) after an order is placed, before it locks and is sent to the kitchen, balancing flexibility for customers with stability for kitchen operations.</li>
+      <li>When asked to prioritize a single subsystem for a limited budget, chose order routing &amp; kitchen synchronization first, since it sits at the center of the workflow &mdash; connecting customers, service staff, and the kitchen &mdash; ahead of subsystems like CRM or feedback collection.</li>
+    </ul>
+    <p style="font-size:14.5px; color:var(--muted); margin-top:18px;"><strong>Considered and set aside:</strong> using AI cameras or sensors to automatically detect when a table becomes occupied or vacated. The idea was shelved due to hardware cost and implementation complexity, and flagged as a possible future direction rather than part of this project's scope.</p>
   </div>
 
   <div class="case-block">
@@ -84,5 +96,6 @@
 
 <footer>&copy; 2026 Tran Vo Thi Thu Uyen</footer>
 
+<script src="../lightbox.js"></script>
 </body>
 </html>

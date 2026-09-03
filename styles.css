@@ -3,19 +3,38 @@
    Edit the variables below to change colors/fonts site-wide.
    ========================================================= */
 :root {
-  --bg: #F5F6F3;
+  --bg: #F8F7FC;
   --surface: #FFFFFF;
-  --ink: #20241F;
-  --muted: #66756E;
-  --accent: #5C8D72;
-  --accent-2: #A8C9B4;
-  --accent-soft: #E5EBE6;
-  --border: #E1E4DE;
-  --font-display: 'Quicksand', sans-serif;
+  --ink: #262640;
+  --muted: #5B5B78;
+  --accent: #6C7EE1;
+  --accent-2: #92B9E3;
+  --accent-soft: #E7E9FA;
+  --border: #E3E2F2;
+
+  /* per-project accent colors, derived from the palette */
+  --proj1: #6C7EE1;      --proj1-soft: #E7E9FA;   /* Learning Analytics — indigo/blue */
+  --proj2: #C1663B;      --proj2-soft: #FFEDE3;   /* Vinamilk — peach */
+  --proj3: #9A4FC9;      --proj3-soft: #F2E6FA;   /* Pizza Company — purple/pink */
+
+  --font-display: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
   --radius: 18px;
   --radius-sm: 10px;
 }
+
+/* project-specific theming, applied via a class on <body> in each case-study page */
+body.theme-p1 { --accent: var(--proj1); --accent-soft: var(--proj1-soft); }
+body.theme-p2 { --accent: var(--proj2); --accent-soft: var(--proj2-soft); }
+body.theme-p3 { --accent: var(--proj3); --accent-soft: var(--proj3-soft); }
+
+/* project-specific card accents on the homepage grid */
+.project-card.p1 .case-tag, .project-card.p1 .view-link { color: var(--proj1); }
+.project-card.p1 .case-tag { background: var(--proj1-soft); }
+.project-card.p2 .case-tag, .project-card.p2 .view-link { color: var(--proj2); }
+.project-card.p2 .case-tag { background: var(--proj2-soft); }
+.project-card.p3 .case-tag, .project-card.p3 .view-link { color: var(--proj3); }
+.project-card.p3 .case-tag { background: var(--proj3-soft); }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -31,9 +50,9 @@ body {
 a { color: var(--accent); }
 
 .container {
-  max-width: 920px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
 /* NAV */
@@ -41,12 +60,12 @@ nav {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(239, 245, 242, 0.9);
+  background: rgba(248, 247, 252, 0.9);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
 .nav-inner {
-  max-width: 920px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 16px 24px;
   display: flex;
@@ -285,15 +304,15 @@ section.alt .gallery figure { background: var(--surface); }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 22px;
+  padding: 18px 20px;
 }
 .skill-card h4 {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: 14.5px;
   font-weight: 600;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
-.skill-card p { font-size: 14px; color: var(--muted); margin: 0; }
+.skill-card p { font-size: 13.5px; color: var(--muted); margin: 0; }
 
 /* CONTACT */
 .contact-box {
@@ -318,4 +337,60 @@ footer {
   .nav-links { display: none; }
   h1 { font-size: 32px; }
   .contact-box { padding: 30px 20px; }
+}
+
+/* GALLERY — click to enlarge */
+.gallery figure { position: relative; }
+.gallery img { cursor: zoom-in; }
+.zoom-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(38, 38, 64, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.5);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 35, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  padding: 30px;
+}
+.lightbox-overlay.active { opacity: 1; pointer-events: auto; }
+.lightbox-overlay img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  font-family: var(--font-body);
 }

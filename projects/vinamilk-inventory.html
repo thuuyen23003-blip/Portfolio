@@ -6,10 +6,10 @@
 <title>Inventory Management at Vinamilk | Tran Vo Thi Thu Uyen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="theme-p2">
 
 <nav>
   <div class="nav-inner">
@@ -43,6 +43,17 @@
     <div class="stack-tags">
       <span>Odoo Inventory</span><span>Activity Diagram</span><span>Warehouse Management</span><span>ERP</span>
     </div>
+  </div>
+
+  <div class="case-block">
+    <h4>Key Design Decisions</h4>
+    <ul class="contribution-list">
+      <li>Configured Warehouses and Storage Locations before Products or BOM &mdash; a business needs to know where goods will be received and stored before modeling what flows through it.</li>
+      <li>Sequenced the process starting from Purchase rather than Manufacturing: set up the warehouse &rarr; procure raw materials &rarr; receive into storage &rarr; produce &rarr; receive finished goods &rarr; sell and collect payment, mirroring how a manufacturing business actually operates.</li>
+      <li>Used Bill of Materials (BOM) to standardize production recipes, and duplicated existing BOMs for similar product lines (e.g., milk variants differing mainly in flavor) instead of building each from scratch, reducing setup time and input errors.</li>
+      <li>Used Routes to define how goods move between stages, complementing Storage Locations (which define where goods sit) with what happens to them next.</li>
+    </ul>
+    <p style="font-size:14.5px; color:var(--muted); margin-top:18px;"><strong>Challenge:</strong> initial product records were created before fully defining Product Category and Unit of Measure. This required revisiting Odoo's documentation and standardizing the master data before continuing with the Manufacturing configuration &mdash; a lesson in planning master data end-to-end rather than patching it iteratively.</p>
   </div>
 
   <div class="case-block">
@@ -80,5 +91,6 @@
 
 <footer>&copy; 2026 Tran Vo Thi Thu Uyen</footer>
 
+<script src="../lightbox.js"></script>
 </body>
 </html>
